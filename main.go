@@ -12,23 +12,20 @@ import (
 )
 
 func main() {
-	var check_arg string
-	var check_bool bool
+	var check_g bool
+	var check_l bool
 	app := cli.NewApp()
-	app.Flags = []cli.Flag{
-		cli.StringFlag{
-			Name:        "global ip, g",
-			Value:       "global ip",
-			Usage:       "global ip",
-			Destination: &check_arg,
-		},
-	}
 
 	app.Flags = []cli.Flag{
 		cli.BoolFlag{
 			Name:        "local ip, l",
 			Usage:       "local ip",
-			Destination: &check_bool,
+			Destination: &check_l,
+		},
+		cli.BoolFlag{
+			Name:        "global ip, g",
+			Usage:       "global ip",
+			Destination: &check_g,
 		},
 	}
 
@@ -37,16 +34,14 @@ func main() {
 			fmt.Println("argc")
 		}
 
-		if check_bool == true {
+		if check_g == true {
 			getglobalip()
 			return nil
 		}
 
-		if check_arg == "a" {
-			fmt.Println("wait")
-		} else {
-			fmt.Println("your local ip")
+		if check_l == true {
 			getmyip()
+			return nil
 		}
 
 		return nil
