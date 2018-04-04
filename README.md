@@ -2,5 +2,5 @@
 
 
 ## option  
-`-g` show your external ip
+`-g` show your external ip  
 `-l` show your local ip
